@@ -42,9 +42,9 @@ use Sabre\DAV\PropPatch;
  * Class Calendar
  *
  * @package OCA\DAV\CalDAV
- * @property BackendInterface|CalDavBackend $caldavBackend
+ * @property CalDavBackend $caldavBackend
  */
-class Calendar extends \Sabre\CalDAV\Calendar implements IShareable {
+class Calendar extends \Sabre\CalDAV\Calendar implements IRestorable, IShareable {
 
 	/** @var IConfig */
 	private $config;
@@ -398,5 +398,9 @@ class Calendar extends \Sabre\CalDAV\Calendar implements IShareable {
 		}
 
 		return parent::getChanges($syncToken, $syncLevel, $limit);
+	}
+
+	public function restore(): void {
+		$this->caldavBackend->restoreCalendar((int) $this->calendarInfo['id']);
 	}
 }

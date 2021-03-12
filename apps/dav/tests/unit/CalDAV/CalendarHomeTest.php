@@ -141,7 +141,7 @@ class CalendarHomeTest extends TestCase {
 
 		$actual = $this->calendarHome->getChildren();
 
-		$this->assertCount(6, $actual);
+		$this->assertCount(7, $actual);
 		$this->assertInstanceOf(Inbox::class, $actual[0]);
 		$this->assertInstanceOf(Outbox::class, $actual[1]);
 		$this->assertEquals('plugin1calendar1', $actual[2]);

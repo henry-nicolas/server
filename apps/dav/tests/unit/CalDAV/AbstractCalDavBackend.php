@@ -140,7 +140,7 @@ abstract class AbstractCalDavBackend extends TestCase {
 				return $event instanceof CalendarDeletedEvent;
 			}));
 		foreach ($calendars as $calendar) {
-			$this->backend->deleteCalendar($calendar['id']);
+			$this->backend->deleteCalendar($calendar['id'], true);
 		}
 		$subscriptions = $this->backend->getSubscriptionsForUser($principal);
 		foreach ($subscriptions as $subscription) {

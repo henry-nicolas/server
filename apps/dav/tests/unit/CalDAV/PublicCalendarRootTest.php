@@ -129,7 +129,7 @@ class PublicCalendarRootTest extends TestCase {
 
 		$books = $this->backend->getCalendarsForUser(self::UNIT_TEST_USER);
 		foreach ($books as $book) {
-			$this->backend->deleteCalendar($book['id']);
+			$this->backend->deleteCalendar($book['id'], true);
 		}
 	}
 
