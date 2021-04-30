@@ -958,7 +958,7 @@ class CalDavBackend extends AbstractBackend implements SyncSupport, Subscription
 				->where($qbDeleteCalendar->expr()->eq('id', $qbDeleteCalendar->createNamedParameter($calendarId)))
 				->executeUpdate();
 
-		// Only dispatch if we actually deleted anything
+			// Only dispatch if we actually deleted anything
 			if ($calendarData) {
 				$this->dispatcher->dispatchTyped(new CalendarDeletedEvent((int)$calendarId, $calendarData, $shares));
 			}

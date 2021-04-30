@@ -87,6 +87,7 @@ return array(
     'OCA\\DAV\\CalDAV\\Search\\Xml\\Request\\CalendarSearchReport' => $baseDir . '/../lib/CalDAV/Search/Xml/Request/CalendarSearchReport.php',
     'OCA\\DAV\\CalDAV\\Trashbin\\DeletedCalendarObject' => $baseDir . '/../lib/CalDAV/Trashbin/DeletedCalendarObject.php',
     'OCA\\DAV\\CalDAV\\Trashbin\\DeletedCalendarObjectsCollection' => $baseDir . '/../lib/CalDAV/Trashbin/DeletedCalendarObjectsCollection.php',
+    'OCA\\DAV\\CalDAV\\Trashbin\\Plugin' => $baseDir . '/../lib/CalDAV/Trashbin/Plugin.php',
     'OCA\\DAV\\CalDAV\\Trashbin\\RestoreTarget' => $baseDir . '/../lib/CalDAV/Trashbin/RestoreTarget.php',
     'OCA\\DAV\\CalDAV\\Trashbin\\TrashbinHome' => $baseDir . '/../lib/CalDAV/Trashbin/TrashbinHome.php',
     'OCA\\DAV\\CalDAV\\WebcalCaching\\Plugin' => $baseDir . '/../lib/CalDAV/WebcalCaching/Plugin.php',

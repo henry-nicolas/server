@@ -52,6 +52,9 @@ class Calendar extends \Sabre\CalDAV\Calendar implements IRestorable, IShareable
 	/** @var IL10N */
 	protected $l10n;
 
+	/** @var bool */
+	private $useTrashbin = true;
+
 	/**
 	 * Calendar constructor.
 	 *
@@ -269,7 +272,10 @@ class Calendar extends \Sabre\CalDAV\Calendar implements IRestorable, IShareable
 			$this->config->setUserValue($userId, 'dav', 'generateBirthdayCalendar', 'no');
 		}
 
-		parent::delete();
+		$this->caldavBackend->deleteCalendar(
+			$this->calendarInfo['id'],
+			!$this->useTrashbin
+		);
 	}
 
 	public function propPatch(PropPatch $propPatch) {
@@ -402,5 +408,9 @@ class Calendar extends \Sabre\CalDAV\Calendar implements IRestorable, IShareable
 
 	public function restore(): void {
 		$this->caldavBackend->restoreCalendar((int) $this->calendarInfo['id']);
+	}
+
+	public function disableTrashbin() {
+		$this->useTrashbin = false;
 	}
 }
