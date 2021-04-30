@@ -191,7 +191,7 @@
     <RedundantCast occurrences="1">
       <code>(int)$calendarId</code>
     </RedundantCast>
-    <TooManyArguments occurrences="14">
+    <TooManyArguments occurrences="13">
       <code>dispatch</code>
       <code>dispatch</code>
       <code>dispatch</code>
@@ -205,7 +205,6 @@
       <code>dispatch</code>
       <code>dispatch</code>
       <code>dispatch</code>
-      <code>purgeProperties</code>
     </TooManyArguments>
     <UndefinedFunction occurrences="4">
       <code>Uri\split($principalUri)</code>
@@ -215,16 +214,12 @@
     </UndefinedFunction>
   </file>
   <file src="apps/dav/lib/CalDAV/CalendarHome.php">
-    <InvalidReturnStatement occurrences="5">
-      <code>$calendarPlugin-&gt;getCalendarInCalendarHome($this-&gt;principalInfo['uri'], $calendarUri)</code>
-      <code>new Inbox($this-&gt;caldavBackend, $this-&gt;principalInfo['uri'])</code>
-      <code>new Outbox($this-&gt;config, $this-&gt;principalInfo['uri'])</code>
-      <code>new Subscription($this-&gt;caldavBackend, $subscription)</code>
-      <code>new \Sabre\CalDAV\Notifications\Collection($this-&gt;caldavBackend, $this-&gt;principalInfo['uri'])</code>
-    </InvalidReturnStatement>
-    <InvalidReturnType occurrences="1">
-      <code>getChild</code>
-    </InvalidReturnType>
+    <InvalidNullableReturnType occurrences="1">
+      <code>INode</code>
+    </InvalidNullableReturnType>
+    <LessSpecificImplementedReturnType occurrences="1">
+      <code>INode</code>
+    </LessSpecificImplementedReturnType>
     <NullableReturnStatement occurrences="1">
       <code>$calendarPlugin-&gt;getCalendarInCalendarHome($this-&gt;principalInfo['uri'], $calendarUri)</code>
     </NullableReturnStatement>
@@ -2453,9 +2448,6 @@
     </InvalidReturnType>
   </file>
   <file src="core/Command/Log/Manage.php">
-    <FalsableReturnStatement occurrences="1">
-      <code>\DateTimeZone::listIdentifiers()</code>
-    </FalsableReturnStatement>
     <InvalidScalarArgument occurrences="1">
       <code>$levelNum</code>
     </InvalidScalarArgument>
@@ -2569,7 +2561,7 @@
   <file src="core/routes.php">
     <InvalidScope occurrences="2">
       <code>$this</code>
-      <code>$this</code>
+      <code>$this-&gt;create('core_ajax_update', '/core/ajax/update.php')</code>
     </InvalidScope>
   </file>
   <file src="core/templates/layout.public.php">
@@ -2830,8 +2822,11 @@
     </MoreSpecificImplementedParamType>
   </file>
   <file src="lib/private/AppFramework/Utility/SimpleContainer.php">
-    <UndefinedMethod occurrences="1">
+    <UndefinedMethod occurrences="4">
       <code>getName</code>
+      <code>isBuiltin</code>
+      <code>isBuiltin</code>
+      <code>isBuiltin</code>
     </UndefinedMethod>
   </file>
   <file src="lib/private/Archive/TAR.php">

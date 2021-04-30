@@ -273,7 +273,7 @@ class CalDavBackend extends AbstractBackend implements SyncSupport, Subscription
 	}
 
 	/**
-	 * @return array{id: string, deleted_at: int}[]
+	 * @return array{id: int, deleted_at: int}[]
 	 */
 	public function getDeletedCalendars(int $deletedBefore): array {
 		$qb = $this->db->getQueryBuilder();
