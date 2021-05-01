@@ -84,8 +84,8 @@ class CORSMiddleware extends Middleware {
 		// ensure that @CORS annotated API routes are not used in conjunction
 		// with session authentication since this enables CSRF attack vectors
 		if ($this->reflector->hasAnnotation('CORS') && !$this->reflector->hasAnnotation('PublicPage')) {
-			$user = array_key_exists('PHP_AUTH_USER', $this->request->server) ? $this->request->server['PHP_AUTH_USER'] : null;
-			$pass = array_key_exists('PHP_AUTH_PW', $this->request->server) ? $this->request->server['PHP_AUTH_PW'] : null;
+			$user = $this->request->server['PHP_AUTH_USER'] ?? null;
+			$pass = $this->request->server['PHP_AUTH_PW'] ?? null;
 
 			$this->session->logout();
 			try {
