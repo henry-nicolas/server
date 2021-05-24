@@ -65,6 +65,10 @@ class OfflineUser {
 	 */
 	protected $email;
 	/**
+	 * @var string $phone
+	 */
+	protected $phone;
+	/**
 	 * @var bool $hasActiveShares
 	 */
 	protected $hasActiveShares;
@@ -116,6 +120,7 @@ class OfflineUser {
 		$data['homePath'] = $this->getHomePath();
 		$data['lastLogin'] = $this->getLastLogin();
 		$data['email'] = $this->getEmail();
+		$data['phone'] = $this->getPhone();
 		$data['hasActiveShares'] = $this->getHasActiveShares();
 
 		return $data;
@@ -174,6 +179,16 @@ class OfflineUser {
 	}
 
 	/**
+	 * getter for phone
+	 * @return string
+	 */
+	public function getPhone() {
+		if ($this->phone === null) {
+			$this->fetchDetails();
+		}
+		return $this->phone;
+	}
+	/**
 	 * getter for home directory path
 	 * @return string
 	 */
@@ -227,6 +242,7 @@ class OfflineUser {
 			'homePath' => 'user_ldap',
 			'foundDeleted' => 'user_ldap',
 			'email' => 'settings',
+			'phone' => 'settings',
 			'lastLogin' => 'login',
 		];
 		foreach ($properties as $property => $app) {

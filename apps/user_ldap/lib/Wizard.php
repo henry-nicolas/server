@@ -310,6 +310,55 @@ class Wizard extends LDAPUtility {
 	}
 
 	/**
+	 * detects the most often used phone attribute for users applying to the
+	 * user list filter. If a setting is already present that returns at least
+	 * one hit, the detection will be canceled.
+	 * @return WizardResult|bool
+	 */
+	public function detectPhoneAttribute() {
+		if (!$this->checkRequirements(['ldapHost',
+			'ldapPort',
+			'ldapBase',
+			'ldapUserFilter',
+		])) {
+			return  false;
+		}
+
+		$attr = $this->configuration->ldapPhoneAttribute;
+		if ($attr !== '') {
+			$count = (int)$this->countUsersWithAttribute($attr, true);
+			if ($count > 0) {
+				return false;
+			}
+			$writeLog = true;
+		} else {
+			$writeLog = false;
+		}
+
+		$phoneAttributes = ['phone', 'mobile'];
+		$winner = '';
+		$maxUsers = 0;
+		foreach ($phoneAttributes as $attr) {
+			$count = $this->countUsersWithAttribute($attr);
+			if ($count > $maxUsers) {
+				$maxUsers = $count;
+				$winner = $attr;
+			}
+		}
+
+		if ($winner !== '') {
+			$this->applyFind('ldap_phone_attr', $winner);
+			if ($writeLog) {
+				\OCP\Util::writeLog('user_ldap', 'The phone attribute has ' .
+					'automatically been reset, because the original value ' .
+					'did not return any results.', ILogger::INFO);
+			}
+		}
+
+		return $this->result;
+	}
+
+	/**
 	 * @return WizardResult
 	 * @throws \Exception
 	 */

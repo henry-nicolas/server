@@ -20,6 +20,7 @@ OCA = OCA || {};
 			this.setTrigger([
 				'ldap_loginfilter_username',
 				'ldap_loginfilter_email',
+				'ldap_loginfilter_phone',
 				'ldap_loginfilter_attributes'
 			]);
 			this.setTargetKey('ldap_login_filter');

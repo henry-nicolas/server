@@ -31,6 +31,10 @@ OCA = OCA || {};
 					$element: $('#ldap_loginfilter_email'),
 					setMethod: 'setLoginAttributeEmail'
 				},
+				ldap_loginfilter_phone: {
+					$element: $('#ldap_loginfilter_phone'),
+					setMethod: 'setLoginAttributePhone'
+				},
 				ldap_login_filter_mode: {
 					setMethod: 'setFilterModeOnce'
 				},
@@ -67,6 +71,7 @@ OCA = OCA || {};
 				[
 					this.managedItems.ldap_loginfilter_username.$element,
 					this.managedItems.ldap_loginfilter_email.$element,
+					this.managedItems.ldap_loginfilter_phone.$element,
 					this.managedItems.ldap_loginfilter_attributes.$element
 				],
 				'ldap_login_filter_mode'
@@ -128,6 +133,17 @@ OCA = OCA || {};
 		setLoginAttributeEmail: function(useEmail) {
 			this.setElementValue(
 				this.managedItems.ldap_loginfilter_email.$element, useEmail
+			);
+		},
+
+		/**
+		 * updates the phone attribute check box
+		 *
+		 * @param {string} usePhone contains an int
+		 */
+		setLoginAttributePhone: function(usePhone) {
+			this.setElementValue(
+				this.managedItems.ldap_loginfilter_phone.$element, usePhone
 			);
 		},
 

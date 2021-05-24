@@ -38,6 +38,7 @@ use OCP\IConfig;
 use OCP\IDBConnection;
 use OCP\Image;
 use OCP\IUserManager;
+use OCP\Accounts\IAccountManager;
 use OCP\Notification\IManager as INotificationManager;
 use OCP\Share\IManager;
 
@@ -59,6 +60,9 @@ class Manager {
 
 	/** @var IUserManager */
 	protected $userManager;
+
+	/** @var IAccountManager */
+	protected $accountManager;
 
 	/** @var INotificationManager */
 	protected $notificationManager;
@@ -93,6 +97,7 @@ class Manager {
 		IAvatarManager $avatarManager,
 		Image $image,
 		IUserManager $userManager,
+		IAccountManager $accountManager,
 		INotificationManager $notificationManager,
 		IManager $shareManager
 	) {
@@ -102,6 +107,7 @@ class Manager {
 		$this->avatarManager = $avatarManager;
 		$this->image = $image;
 		$this->userManager = $userManager;
+		$this->accountManager = $accountManager;
 		$this->notificationManager = $notificationManager;
 		$this->usersByDN = new CappedMemoryCache();
 		$this->usersByUid = new CappedMemoryCache();
@@ -129,6 +135,7 @@ class Manager {
 		$user = new User($uid, $dn, $this->access, $this->ocConfig,
 			$this->ocFilesystem, clone $this->image, $this->ocLog,
 			$this->avatarManager, $this->userManager,
+			$this->accountManager,
 			$this->notificationManager);
 		$this->usersByDN[$dn] = $user;
 		$this->usersByUid[$uid] = $user;
@@ -173,6 +180,7 @@ class Manager {
 			$this->access->getConnection()->ldapExpertUUIDUserAttr,
 			$this->access->getConnection()->ldapQuotaAttribute,
 			$this->access->getConnection()->ldapEmailAttribute,
+			$this->access->getConnection()->ldapPhoneAttribute,
 			$this->access->getConnection()->ldapUserDisplayName,
 			$this->access->getConnection()->ldapUserDisplayName2,
 			$this->access->getConnection()->ldapExtStorageHomeAttribute,

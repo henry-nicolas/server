@@ -254,11 +254,13 @@ class ConfigAPIController extends OCSController {
 	 *     <ldapLoginFilter>(&amp;(|(objectclass=inetOrgPerson))(uid=%uid))</ldapLoginFilter>
 	 *     <ldapLoginFilterMode>0</ldapLoginFilterMode>
 	 *     <ldapLoginFilterEmail>0</ldapLoginFilterEmail>
+	 *     <ldapLoginFilterPhone>0</ldapLoginFilterPhone>
 	 *     <ldapLoginFilterUsername>1</ldapLoginFilterUsername>
 	 *     <ldapLoginFilterAttributes></ldapLoginFilterAttributes>
 	 *     <ldapQuotaAttribute></ldapQuotaAttribute>
 	 *     <ldapQuotaDefault></ldapQuotaDefault>
 	 *     <ldapEmailAttribute>mail</ldapEmailAttribute>
+	 *     <ldapPhoneAttribute>phone</ldapPhoneAttribute>
 	 *     <ldapCacheTTL>20</ldapCacheTTL>
 	 *     <ldapUuidUserAttribute>auto</ldapUuidUserAttribute>
 	 *     <ldapUuidGroupAttribute>auto</ldapUuidGroupAttribute>

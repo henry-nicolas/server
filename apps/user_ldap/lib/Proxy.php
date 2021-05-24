@@ -70,6 +70,7 @@ abstract class Proxy {
 		static $groupMap;
 		static $shareManager;
 		static $coreUserManager;
+		static $coreAccountManager;
 		static $coreNotificationManager;
 		if ($fs === null) {
 			$ocConfig = \OC::$server->getConfig();
@@ -80,12 +81,13 @@ abstract class Proxy {
 			$userMap = new UserMapping($db);
 			$groupMap = new GroupMapping($db);
 			$coreUserManager = \OC::$server->getUserManager();
+			$coreAccountManager = \OC::$server->query(AccountManager::class);
 			$coreNotificationManager = \OC::$server->getNotificationManager();
 			$shareManager = \OC::$server->get(IManager::class);
 		}
 		$userManager =
 			new Manager($ocConfig, $fs, $log, $avatarM, new \OCP\Image(),
-				$coreUserManager, $coreNotificationManager, $shareManager);
+				$coreUserManager, $coreAccountManager, $coreNotificationManager, $shareManager);
 		$connector = new Connection($this->ldap, $configPrefix);
 		$access = new Access($connector, $this->ldap, $userManager, new Helper($ocConfig, \OC::$server->getDatabaseConnection()), $ocConfig, $coreUserManager);
 		$access->setUserMapper($userMap);

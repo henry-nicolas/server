@@ -21,6 +21,7 @@ OCA = OCA || {};
 		detectors.push(new OCA.LDAP.Wizard.WizardDetectorPort());
 		detectors.push(new OCA.LDAP.Wizard.WizardDetectorBaseDN());
 		detectors.push(new OCA.LDAP.Wizard.WizardDetectorEmailAttribute());
+		detectors.push(new OCA.LDAP.Wizard.WizardDetectorPhoneAttribute());
 		detectors.push(new OCA.LDAP.Wizard.WizardDetectorUserDisplayNameAttribute());
 		detectors.push(new OCA.LDAP.Wizard.WizardDetectorUserGroupAssociation());
 		detectors.push(new OCA.LDAP.Wizard.WizardDetectorUserObjectClasses());
